@@ -23,4 +23,9 @@ defmodule SecretSantaTest do
       names -- Enum.map(tags, & &1.to) == []
     end
   end
+
+  test "returns names in a different order each time" do
+    names = ["Fred Bloggs", "John Doe"]
+    assert SecretSanta.tags(names) != SecretSanta.tags(names)
+  end
 end
