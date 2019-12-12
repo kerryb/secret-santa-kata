@@ -1,18 +1,5 @@
 defmodule SecretSanta do
-  @moduledoc """
-  Documentation for SecretSanta.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> SecretSanta.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def tags(names) do
+    names
   end
 end
