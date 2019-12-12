@@ -1,5 +1,5 @@
 defmodule SecretSanta do
   def tags(names) do
-    names
+    names |> Enum.map(&%{from: &1})
   end
 end
