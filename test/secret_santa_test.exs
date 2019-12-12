@@ -16,4 +16,11 @@ defmodule SecretSantaTest do
       names -- Enum.map(tags, & &1.from) == []
     end
   end
+
+  property "includes each name once as a recipient" do
+    forall names <- list(binary()) do
+      tags = SecretSanta.tags(names)
+      names -- Enum.map(tags, & &1.to) == []
+    end
+  end
 end
