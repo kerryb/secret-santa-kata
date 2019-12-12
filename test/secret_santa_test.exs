@@ -28,4 +28,15 @@ defmodule SecretSantaTest do
     names = ["Fred Bloggs", "John Doe"]
     assert SecretSanta.tags(names) != SecretSanta.tags(names)
   end
+
+  property "does not tag anyone's present as from themself" do
+    forall names <- list_min_two(binary()) do
+      tags = SecretSanta.tags(names)
+      tags |> Enum.all?(&(&1.from != &1.to))
+    end
+  end
+
+  defp list_min_two(gen) do
+    such_that(l <- non_empty(list(gen)), when: length(l) > 1)
+  end
 end

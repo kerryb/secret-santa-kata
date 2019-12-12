@@ -1,5 +1,7 @@
 defmodule SecretSanta do
   def tags(names) do
-    names |> Enum.shuffle() |> Enum.map(&%{from: &1, to: &1})
+    Enum.shuffle(names)
+    |> Enum.zip(Enum.shuffle(names))
+    |> Enum.map(fn {from, to} -> %{from: from, to: to} end)
   end
 end
