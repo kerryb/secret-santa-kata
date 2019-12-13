@@ -30,13 +30,19 @@ defmodule SecretSantaTest do
   end
 
   property "does not tag anyone's present as from themself" do
-    forall names <- list_min_two(binary()) do
+    forall names <- at_least_two_names() do
       tags = SecretSanta.tags(names)
       tags |> Enum.all?(&(&1.from != &1.to))
     end
   end
 
-  defp list_min_two(gen) do
-    such_that(l <- non_empty(list(gen)), when: length(l) > 1)
+  defp at_least_two_names() do
+    let([first <- name(), second <- name(), many <- list(name())],
+      do: [first, second | many]
+    )
+  end
+
+  defp name() do
+    let([first <- bitstring(8), second <- bitstring(8)], do: first <> " " <> second)
   end
 end
