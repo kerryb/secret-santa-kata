@@ -32,7 +32,11 @@ SecretSanta(["Firstname1 Lastname1", "Firstname2 Lastname2", "Firstname3 Lastnam
 Returns:
 
 ```
-[{To: "Firstname1 Lastname1", From: "Firstname3 Lastname3"}, [{To: "Firstname3 Lastname3", From: "Firstname2 Lastname2"}, [{To: "Firstname2 Lastname2", From: "Firstname1 Lastname1"}]
+[
+  {To: "Firstname1 Lastname1", From: "Firstname3 Lastname3"},
+  {To: "Firstname3 Lastname3", From: "Firstname2 Lastname2"}, 
+  {To: "Firstname2 Lastname2", From: "Firstname1 Lastname1"}
+]
 ```
 
 NOTE: in the example above if 1 bought for 2 and 2 bought for 1, 3 would be
